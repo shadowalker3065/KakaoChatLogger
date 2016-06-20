@@ -16,7 +16,7 @@ namespace ChatLogger
             List<ChatLog> chatRecord = new List<ChatLog>();
             //List<Announcements> announcements = new List<Announcements>();
             Logger log = new Logger();
-
+            // this is a change.
             try
             {
                 using (StreamReader sr = new StreamReader(@"E:\Hobby\KakaoExport.txt"))

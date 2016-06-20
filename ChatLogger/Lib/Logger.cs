@@ -34,7 +34,7 @@ namespace ChatLogger.Lib
         private int inviteID;
 
         /// <summary>
-        /// Initiate logger
+        /// Initiate logger with empty lists
         /// </summary>
         public Logger()
         {
@@ -44,6 +44,10 @@ namespace ChatLogger.Lib
             announcementRecord = new List<Announcements>();
         }
 
+        /// <summary>
+        /// Update the leaver's list
+        /// </summary>
+        /// <param name="rawr">Leaver string. The string from the .txt file</param>
         public void updateLeaver(string rawr)
         {
             char[] delimiterChars = { ' ' };
@@ -53,18 +57,32 @@ namespace ChatLogger.Lib
             leaver.Date = currentDate;
         }
 
+        /// <summary>
+        /// New addition to the chatlist.
+        /// </summary>
+        /// <param name="log">Item to be added</param>
+        /// <param name="CurrentList">Ref variable, current list</param>
         public void AddNewLog(ChatLog log, ref List<ChatLog> CurrentList)
         {
             log.Date = currentDate;
             CurrentList.Add(log);
         }
 
+        /// <summary>
+        /// Update the current date for the iteration
+        /// TODO: Requires update on the date verification system
+        /// </summary>
+        /// <param name="date">New date</param>
         public void setCurrentDate(string date)
         {
             currentDate = Regex.Replace(date, "[^a-zA-Z,0-9 ]", "");
             currentDate = currentDate.Substring(1);
         }
 
+        /// <summary>
+        /// Add new addition to the announcement list
+        /// </summary>
+        /// <param name="newAnnouncement">New announcement to be added</param>
         public void setAnnouncement(string newAnnouncement)
         {
             char[] delimiterChars = { '[', ']' };
@@ -79,6 +97,10 @@ namespace ChatLogger.Lib
             announcementRecord.Add(announcement);
         }
 
+        /// <summary>
+        /// Add a new invite record to the list
+        /// </summary>
+        /// <param name="invite">Invite to be added</param>
         public void setNewInvite(string invite)
         {
             int start = invite.IndexOf("invited");
